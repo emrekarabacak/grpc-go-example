@@ -12,7 +12,12 @@ import (
 type server struct{}
 
 func (s *server) GetDetails(ctx context.Context, req *product.ProductRequest) (*product.ProductResponse, error) {
-	return &product.ProductResponse{}, nil
+	log.Printf("Request arrived : %v", req)
+	return &product.ProductResponse{
+		ProductId:   req.ProductId,
+		ProductName: "test-product",
+		Quantity:    1,
+	}, nil
 }
 
 func main() {
